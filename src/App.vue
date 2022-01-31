@@ -2,13 +2,26 @@
   <div id="app">
     <main> 
       <div class="search-box"> 
-        <input type="text" class="search-bar" placeholder="Search..."/>
-      </div>
-      <div class="weather-wrap">
-        <div class="location-box"> 
-        <div class="location"></div>
+        <input 
+        type="text" 
+        class="search-bar" 
+        placeholder="Search..."
+        v-model="query"
+        />
+        {{  query  }}
       </div>
 
+      <div class="weather-wrap">
+        <div class="location-box"> 
+          <div class="location">Northampton, UK </div>
+          <div class="date">Sunday January 30 2022</div>
+        </div>
+      </div>
+
+      <div class="weather-box">
+        <div class="temp">9°C</div>
+        <div class="weather">Rain</div>
+      </div>
     </main>
 
   </div>
@@ -20,9 +33,13 @@ export default {
   name: 'App',
   data () {
     return {
-      api_key: 'c6619fe5bdbed6c3775c65c8f3279bfa'
+      api_key: 'c6619fe5bdbed6c3775c65c8f3279bfa',
+      url_base: 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={c6619fe5bdbed6c3775c65c8f3279bfa}/',
+      query: '',
+      weather:{}
   }
-}
+},
+
 }
 
 </script>
@@ -81,4 +98,48 @@ main {
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 16px 0px 16px 0px;
 }
+
+.location-box .location { 
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1px 3px rgba(0,0,0,0.25);
+}
+
+.location-box .date {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+}  
+
+.weather-box{
+  text-align: center;
+}
+
+.weather-box .temp {
+  display: inline-block;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 102px;
+  font-weight: 900;
+
+  text-shadow: 3px 6px rgba(0,0,0,0.25);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  margin: 30px 0px;
+
+  box-shadow: 3px 6px rgba(0,0,0,0.25);
+}
+
+.weather-box .weather {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 3px 6px rgba(0,0,0,0.25);
+}
 </style>
+
