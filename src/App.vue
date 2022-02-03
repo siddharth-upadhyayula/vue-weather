@@ -7,6 +7,7 @@
         class="search-bar" 
         placeholder="Search..."
         v-model="query"
+        
         />
         {{  query  }}
       </div>
